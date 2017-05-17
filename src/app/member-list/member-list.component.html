@@ -4,19 +4,15 @@
     <tr>
       <th>Name</th>
       <th>eMail</th>
-      <th>Del</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Peter Pan</td>
-      <td>pan@disney.com</td>
-      <td><a href="#">del</a></td>
-    </tr>
-    <tr>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td><a href="#">del</a></td>
+    <tr *ngFor="let member of members | async">
+      <td>{{member.name}}</td>
+      <td>{{member.email}}</td>
+      <td><a (click)="deleteMember(member.email)"><i class="fa fa-trash"></i></a></td>
     </tr>
   </tbody>
 </table>

@@ -8,6 +8,16 @@ import { HeaderComponent } from './header/header.component';
 import { NewMemberComponent } from './new-member/new-member.component';
 import { MemberListComponent } from './member-list/member-list.component';
 
+// ngrx imports
+import { StoreModule } from "@ngrx/store";
+import { EffectsModule } from "@ngrx/effects";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+
+// Our implementation
+import { MemberEffects } from "./member-effects";
+import { Reducers } from "./reducers";
+import { MemberService } from "./member.service";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,9 +29,12 @@ import { MemberListComponent } from './member-list/member-list.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    StoreModule.provideStore(Reducers),
+    EffectsModule.run(MemberEffects),
+    StoreDevtoolsModule.instrumentOnlyWithExtension()
   ],
-  providers: [],
+  providers: [MemberService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
