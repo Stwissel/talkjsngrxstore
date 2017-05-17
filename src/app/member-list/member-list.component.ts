@@ -23,8 +23,8 @@ export class MemberListComponent implements OnInit{
   }
 
   // Emit event to the store to remove a member
-  deleteMember(memberName: string) {
-    this.store.dispatch(new MemberActions.RemoveMember(memberName));
+  deleteMember(memberEmail: string) {
+    this.store.dispatch(new MemberActions.RemoveMember(memberEmail));
   }
 
 }
