@@ -19,6 +19,7 @@ export const Reducers:any = {
     member : memberReducer
 }
 
+// The actual State - can become quite complex
 export interface State {
     players: Member[];
     jackpot: number;
